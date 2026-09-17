@@ -2,24 +2,22 @@ import io
 from dataclasses import dataclass
 from enum import Enum
 from http import HTTPStatus
-from typing import Any, Union
+from typing import Any
 
 import requests
 
 
 class URL(Enum):
-    FIAS = (
+    BEA_NIPA_URL = "https://apps.bea.gov/national/Release/TXT/NipaDataA.txt"
+    BEA_FIXED_ASSETS_URL = (
         "https://apps.bea.gov/national/FixedAssets/Release/TXT/FixedAssets.txt"
     )
-    NIPA = "https://apps.bea.gov/national/Release/TXT/NipaDataA.txt"
 
     def get_kwargs(self) -> dict[str, Any]:
-
-        NAMES = ["series_ids", "period", "value"]
-
+        COLUMNS = ["series_ids", "period", "value"]
         kwargs = {
             "header": 0,
-            "names": NAMES,
+            "names": COLUMNS,
             "index_col": 1,
             "thousands": ",",
         }
@@ -35,4 +33,4 @@ class URL(Enum):
 @dataclass(frozen=True, eq=True)
 class SeriesID:
     series_id: str
-    source: Union[URL]
+    source: URL
