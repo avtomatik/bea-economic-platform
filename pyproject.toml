@@ -1,7 +1,7 @@
 [project]
-name = "bea-vintage-warehouse"
+name = "bea-economic-platform"
 version = "0.1.0"
-description = "Add your description here"
+description = "Reference architecture for a historical BEA economic data platform"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
